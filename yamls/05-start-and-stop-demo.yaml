@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: starter-stop-demo
+  namespace: default
+spec:
+  containers:
+  - name: stop-stop-demo-container
+    image: fangjiaxiaobai/my-app:v1
+    lifecycle:
+      postStart:
+        exec:
+          command: ['/bin/sh', '-c', 'echo Hello from podStart handler > /usr/share/message']
+      preStop:
+        exec:
+          command: ['/bin/sh', '-c', 'echo Bye from podStop handler']

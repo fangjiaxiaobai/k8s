@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: sample-demo
+    namespace: default
+    labels:
+        app: myapp
+spec:
+    containers:
+    -   name: my-app
+        image: fangjiaxiaobai/my-app:v1

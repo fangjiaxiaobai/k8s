@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: liveness-http-get-demo
+  namespace: default
+spec:
+  containers:
+  - name: liveness-http-get-container
+    image: fangjiaxiaobai/my-app:v1
+    imagePullPolicy: IfNotPresent
+    ports:
+    - name: http-port
+      containerPort: 80
+    livenessProbe:
+      httpGet:
+        port: http-port
+        path: /index.html
+      initialDelaySeconds: 1
+      periodSeconds: 1
+      timeoutSeconds: 10
+

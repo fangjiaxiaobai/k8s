@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: init-demo
+  labels:
+    app: init-app
+spec:
+  containers:
+  - name: my-init-demo
+    image: fangjiaxiaobai/my-app:v1
+    command: ["sh", "-c", "echo the app is running! && sleep 3600"]
+  initContainers:
+  - name: init-myservice-1
+    image: busybox
+    command: ['sh', '-c', "until nslookup my-service-1; do echo 'waiting for my-service-1'; sleep 2; done;"]
+  - name: init-myservice-2
+    image: busybox
+    command: ['sh', '-c', "until nslookup my-service-2; do echo 'waiting for my-service-2'; sleep 2; done;"]
