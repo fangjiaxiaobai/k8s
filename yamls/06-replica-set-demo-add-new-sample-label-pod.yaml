@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rs-demo-add-sample-label-ex
+  labels:
+    rs_label: rs-demo
+spec:
+  containers:
+  - name: rs-demo-add-sample-label-ex-container
+    image: fangjiaxiaobai/my-app:v1
+    ports:
+    - containerPort: 80

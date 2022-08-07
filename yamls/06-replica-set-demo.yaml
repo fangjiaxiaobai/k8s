@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replica-set-demo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      rs_label: rs-demo
+  template:
+    metadata:
+      labels:
+        rs_label: rs-demo
+    spec:
+      containers:
+      - name: replica-set-demo-container
+        image: fangjiaxiaobai/my-app:v1
+        env:
+        - name: JAVA_VERSION
+          value: '11'
+        ports:
+        - containerPort: 80

@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: daemon-set-demo
+  labels:
+    app: daemon-set
+spec:
+  selector:
+    matchLabels:
+      app: daemon-set
+  template:
+    metadata:
+      labels:
+        app: daemon-set
+    spec:
+      containers:
+      - name: daemon-set-demo-container
+        image: fangjiaxiaobai/my-app:v1

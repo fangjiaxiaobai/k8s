@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-demo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      demo_name: deployment-labels
+  template:
+    metadata:
+      labels: 
+        demo_name: deployment-labels
+    spec:
+      containers:
+      - name: deployment-demo-container
+        image: fangjiaxiaobai/my-app:v1
+        ports:
+        - containerPort: 80
+      
