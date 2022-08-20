@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-port-container-demo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: node-port-service
+      tag: node-port-tag-v3
+  template:
+    metadata:
+      labels:
+        app: node-port-service
+        tag: node-port-tag-v3
+        env: test
+    spec:
+      containers:
+      - name: cluster-ip-demo-container
+        image: fangjiaxiaobai/my-app:v3
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 80
+        env:
+        - name: "MY_APP_VERSION"
+          value: "3.0"
